@@ -27,7 +27,7 @@ let texto1 = prompt ("Ingresa tu Nombre:").toUpperCase();
 let textoFinal = texto1;
 let texto2 = " ";
 
-while(texto2 = "ESC"){
+while(texto2 != "ESC"){
     texto2 = prompt("Ingrese su otro Nombre:").toUpperCase();
     textoFinal = textoFinal + " " + texto2;
     alert (textoFinal)
