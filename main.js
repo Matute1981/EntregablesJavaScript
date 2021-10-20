@@ -107,12 +107,12 @@
 
 // class Orden{
 //     constructor(producto, precio, cantidad){
-//         this.producto = producto,
-//         this.precio = precio,
-//         this.cantidad = cantidad,
-//         this.envio = 0,
-//         this.subTotal = 0,
-//         this.total = 0
+//         this.producto = producto;
+//         this.precio = precio;
+//         this.cantidad = cantidad;
+//         this.envio = 0;
+//         this.subTotal = 0;
+//         this.total = 0;
 //     }
 
 //     calcularSubTotal(){
@@ -181,15 +181,22 @@
 let producto = 0;
 let cantidadProducto = 0;
 let precio = 0;
+let carrito = []
+const productos = [
+    {producto:"Gorra", precio: 1200},
+    {producto:"Remera", precio: 2500},
+    {producto:"CD - El veneno de tu Soledad", precio: 1400},
+    {producto:"CD - El momento Indicado", precio: 1700}
+]
 
 class Orden{
     constructor(producto, precio, cantidad){
-        this.producto = producto,
-        this.precio = precio,
-        this.cantidad = cantidad,
-        this.envio = 0,
-        this.subTotal = 0,
-        this.total = 0
+        this.producto = producto;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.envio = 0;
+        this.subTotal = 0;
+        this.total = 0;
     }
 
     calcularSubTotal(){
@@ -213,16 +220,52 @@ class Orden{
     }
 }
 
-const productos = [];
+function ordenColocada(){
+    while(!producto || producto == 0 || producto > 4){
+        producto = parseInt(prompt("¿Qué producto desea sumar al carrito? \n 1: Gorra ($1200) \n 2: Remera ($2500) \n 3: CD - El veneno de tu Soledad ($1400) \n 4: CD - El momento Indicado ($1700) "))
+    }
+    switch(producto){
+        case 1 :
+            producto = productos[0].producto;
+            precio = productos[0].precio;
+            break;
+        case 2 :
+            producto = productos[1].producto;
+            precio = productos[1].precio;
+            break;
+        case 3 :
+            producto = productos[2].producto;
+            precio = productos[2].precio;
+            break;
+        case 4 :
+            producto = productos[3].producto;
+            precio = productos[3].precio;
+            break;
+    }
+    
+    while(!cantidadProducto || cantidadProducto == 0){
+        cantidadProducto = parseInt(prompt("Producto seleccionado: " + producto + "\n Indicar la cantidad requerida (sólo números):"));
+    }
+    return new Orden (producto, precio, cantidadProducto)
+}
 
-const producto1 = new Orden ("Gorra","1200");
-productos.push(producto1);
-const producto2 = new Orden ("Remera","2500");
-productos.push(producto2);
-const producto3 = new Orden ("CD - El veneno de tu Soledad","1400");
-productos.push(producto3);
-const producto4 = new Orden ("CD - El momento Indicado","1700");
-productos.push(producto4);
+alert("Estamos listos para tu compra!!!");
+
+const pedido = ordenColocada();
+carrito.push(pedido)
+pedido.calcularSubTotal();
+pedido.calcularIva();
+pedido.calcularEnvio();
+pedido.calcularTotal();
+
+function carritoConfirmado(){
+    for(let i = 0; i < carrito.length; i++){
+        return alert("Resumen de la Orden: \n" + 
+        "- " + carrito[i].producto + " x " + carrito[i].cantidad + ": $" + carrito[i].precio * carrito[i].cantidad + "\n" + "- " + "Total IVA: $" + carrito[i].calcularIva() + "\n" + "- " + "Costo de Envío: $" + carrito[i].envio + "\n" + "Total de la compra final: $" + carrito[i].total);
+    }
+}
+
+carritoConfirmado();
 
 // Entregable Complementario // Ordenar un Array de Objetos (de mayor a menor precio)
 
