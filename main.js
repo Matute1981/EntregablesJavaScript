@@ -178,108 +178,108 @@
 
 // Entregable Clase 6 // Incorporar Arrays
 
-let producto = 0;
-let cantidadProducto = 0;
-let precio = 0;
-let carrito = []
-const productos = [
-    {producto:"Gorra", precio: 1200},
-    {producto:"Remera", precio: 2500},
-    {producto:"CD - El veneno de tu Soledad", precio: 1400},
-    {producto:"CD - El momento Indicado", precio: 1700}
-]
+// let producto = 0;
+// let cantidadProducto = 0;
+// let precio = 0;
+// let carrito = []
+// const productos = [
+//     {producto:"Gorra", precio: 1200},
+//     {producto:"Remera", precio: 2500},
+//     {producto:"CD - El veneno de tu Soledad", precio: 1400},
+//     {producto:"CD - El momento Indicado", precio: 1700}
+// ]
 
-class Orden{
-    constructor(producto, precio, cantidad){
-        this.producto = producto;
-        this.precio = precio;
-        this.cantidad = cantidad;
-        this.envio = 0;
-        this.subTotal = 0;
-        this.total = 0;
-    }
+// class Orden{
+//     constructor(producto, precio, cantidad){
+//         this.producto = producto;
+//         this.precio = precio;
+//         this.cantidad = cantidad;
+//         this.envio = 0;
+//         this.subTotal = 0;
+//         this.total = 0;
+//     }
 
-    calcularSubTotal(){
-        this.subTotal = this.precio * this.cantidad;
-    }
+//     calcularSubTotal(){
+//         this.subTotal = this.precio * this.cantidad;
+//     }
 
-    calcularIva(){
-        return this.subTotal * 0.21;
-    }
+//     calcularIva(){
+//         return this.subTotal * 0.21;
+//     }
 
-    calcularEnvio(){
-        if (this.subTotal >= 3200){
-            this.envio = 0;
-        }else {
-            this.envio = 600;
-        }
-    }
+//     calcularEnvio(){
+//         if (this.subTotal >= 3200){
+//             this.envio = 0;
+//         }else {
+//             this.envio = 600;
+//         }
+//     }
 
-    calcularTotal(){
-        this.total = this.subTotal + this.envio + this.calcularIva();
-    }
-}
+//     calcularTotal(){
+//         this.total = this.subTotal + this.envio + this.calcularIva();
+//     }
+// }
 
-function ordenColocada(){
-    while(!producto || producto == 0 || producto > 4){
-        producto = parseInt(prompt("¿Qué producto desea sumar al carrito? \n 1: Gorra ($1200) \n 2: Remera ($2500) \n 3: CD - El veneno de tu Soledad ($1400) \n 4: CD - El momento Indicado ($1700) "))
-    }
-    switch(producto){
-        case 1 :
-            producto = productos[0].producto;
-            precio = productos[0].precio;
-            break;
-        case 2 :
-            producto = productos[1].producto;
-            precio = productos[1].precio;
-            break;
-        case 3 :
-            producto = productos[2].producto;
-            precio = productos[2].precio;
-            break;
-        case 4 :
-            producto = productos[3].producto;
-            precio = productos[3].precio;
-            break;
-    }
+// function ordenColocada(){
+//     while(!producto || producto == 0 || producto > 4){
+//         producto = parseInt(prompt("¿Qué producto desea sumar al carrito? \n 1: Gorra ($1200) \n 2: Remera ($2500) \n 3: CD - El veneno de tu Soledad ($1400) \n 4: CD - El momento Indicado ($1700) "))
+//     }
+//     switch(producto){
+//         case 1 :
+//             producto = productos[0].producto;
+//             precio = productos[0].precio;
+//             break;
+//         case 2 :
+//             producto = productos[1].producto;
+//             precio = productos[1].precio;
+//             break;
+//         case 3 :
+//             producto = productos[2].producto;
+//             precio = productos[2].precio;
+//             break;
+//         case 4 :
+//             producto = productos[3].producto;
+//             precio = productos[3].precio;
+//             break;
+//     }
     
-    while(!cantidadProducto || cantidadProducto == 0){
-        cantidadProducto = parseInt(prompt("Producto seleccionado: " + producto + "\n Indicar la cantidad requerida (sólo números):"));
-    }
-    return new Orden (producto, precio, cantidadProducto)
-}
+//     while(!cantidadProducto || cantidadProducto == 0){
+//         cantidadProducto = parseInt(prompt("Producto seleccionado: " + producto + "\n Indicar la cantidad requerida (sólo números):"));
+//     }
+//     return new Orden (producto, precio, cantidadProducto)
+// }
 
-alert("Estamos listos para tu compra!!!");
+// alert("Estamos listos para tu compra!!!");
 
-const pedido = ordenColocada();
-carrito.push(pedido)
-pedido.calcularSubTotal();
-pedido.calcularIva();
-pedido.calcularEnvio();
-pedido.calcularTotal();
+// const pedido = ordenColocada();
+// carrito.push(pedido)
+// pedido.calcularSubTotal();
+// pedido.calcularIva();
+// pedido.calcularEnvio();
+// pedido.calcularTotal();
 
-function carritoConfirmado(){
-    for(let i = 0; i < carrito.length; i++){
-        return alert("Resumen de la Orden: \n" + 
-        "- " + carrito[i].producto + " x " + carrito[i].cantidad + ": $" + carrito[i].precio * carrito[i].cantidad + "\n" + "- " + "Total IVA: $" + carrito[i].calcularIva() + "\n" + "- " + "Costo de Envío: $" + carrito[i].envio + "\n" + "Total de la compra final: $" + carrito[i].total);
-    }
-}
+// function carritoConfirmado(){
+//     for(let i = 0; i < carrito.length; i++){
+//         return alert("Resumen de la Orden: \n" + 
+//         "- " + carrito[i].producto + " x " + carrito[i].cantidad + ": $" + carrito[i].precio * carrito[i].cantidad + "\n" + "- " + "Total IVA: $" + carrito[i].calcularIva() + "\n" + "- " + "Costo de Envío: $" + carrito[i].envio + "\n" + "Total de la compra final: $" + carrito[i].total);
+//     }
+// }
 
-carritoConfirmado();
+// carritoConfirmado();
 
 // Entregable Complementario // Ordenar un Array de Objetos (de mayor a menor precio)
 
-productos.sort((a,b)=>{
-    if (a.precio > b.precio){
-        return -1;
-    }
-    if (a.precio < b.precio){
-        return 1;
-    }else{
-        return 0;
-    }
-});
-console.log (productos);
+// productos.sort((a,b)=>{
+//     if (a.precio > b.precio){
+//         return -1;
+//     }
+//     if (a.precio < b.precio){
+//         return 1;
+//     }else{
+//         return 0;
+//     }
+// });
+// console.log (productos);
 
 
 // Clase 7 ejercicios de la clase
@@ -326,3 +326,23 @@ console.log (productos);
 // console.log(producto2);
 
 // localStorage.clear();
+
+// Clase 8 - DOM
+//Interactuar con HTML
+
+const productos = [ {  id: 1,  nombre: "Gorra La Quimera", precio: 1200},
+                    {  id: 2,  nombre: "Remera La Quimera", precio: 2500},
+                    {  id: 3,  nombre: "CD - El veneno de tu Soledad", precio: 1400},
+                    {  id: 4,  nombre: "CD - El momento Indicado" , precio: 1700}];
+
+for (const producto of productos) {
+    let div = document.createElement("div");
+    div.innerHTML = `<div class="container" >
+                                <h3> ID: #${producto.id}</h3>
+                                <h4>  Producto: ${producto.nombre}</h4>
+                                <b> $ ${producto.precio}</b>
+                            </div>
+                    `;
+
+    document.body.appendChild(div);
+}
