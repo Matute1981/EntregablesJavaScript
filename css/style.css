@@ -1,3 +1,7 @@
+body{
+    margin: 20px;
+    padding: auto;
+}
 .container{
     width: 100%;
     padding-right: var(--bs-gutter-x, 0.75rem);
@@ -7,4 +11,24 @@
     color: rebeccapurple;
     border-radius: 20%;
     border-color: black;
+}
+#producto{
+    width: 120%;
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+#producto div{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    background-color: rgb(68, 66, 66);
+    border: 5px solid #000;
+    border-radius: 12px;
+    margin: 24px;
+}
+#producto div imagen{
+    width: 100%;
+}
+
+#producto div boton{
+    width: 50%;
 }

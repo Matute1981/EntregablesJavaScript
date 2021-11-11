@@ -330,19 +330,56 @@
 // Clase 8 - DOM
 //Interactuar con HTML
 
-const productos = [ {  id: 1,  nombre: "Gorra La Quimera", precio: 1200},
-                    {  id: 2,  nombre: "Remera La Quimera", precio: 2500},
-                    {  id: 3,  nombre: "CD - El veneno de tu Soledad", precio: 1400},
-                    {  id: 4,  nombre: "CD - El momento Indicado" , precio: 1700}];
+//const productos = [ {  id: 1,  nombre: "Gorra La Quimera", precio: 1200},
+//                    {  id: 2,  nombre: "Remera La Quimera", precio: 2500},
+//                    {  id: 3,  nombre: "CD - El veneno de tu Soledad", precio: 1400},
+//                    {  id: 4,  nombre: "CD - El momento Indicado" , precio: 1700}];
+//
+//for (const producto of productos) {
+//    let div = document.createElement("div");
+//    div.innerHTML = `<div class="container" >
+//                                <h3> ID: #${producto.id}</h3>
+//                                <h4>  Producto: ${producto.nombre}</h4>
+//                                <b> $ ${producto.precio}</b>
+//                            </div>
+//                    `;
+//
+//    document.body.appendChild(div);
+//}
 
-for (const producto of productos) {
-    let div = document.createElement("div");
-    div.innerHTML = `<div class="container" >
-                                <h3> ID: #${producto.id}</h3>
-                                <h4>  Producto: ${producto.nombre}</h4>
-                                <b> $ ${producto.precio}</b>
-                            </div>
-                    `;
+// Clase 12 JQuery Y Selectores
 
-    document.body.appendChild(div);
-}
+let producto1 = new Producto('Gorra', 1200, './images/default.jpg');
+let producto2 = new Producto('Remera', 2500 ,'./images/default.jpg');
+let producto3 = new Producto('El Veneno de tu Soledad - CD', 1400, './images/default.jpg');
+let producto4 = new Producto('El Momento Indicado - CD', 1700, './images/default.jpg');
+
+let arreglo_producto = new Array () ;
+arreglo_producto.push(producto1);
+arreglo_producto.push(producto2);
+arreglo_producto.push(producto3);
+arreglo_producto.push(producto4);
+
+
+
+$(document).ready(()=>{
+
+
+    for (let i = 0 ;i< arreglo_producto.length ;i++){
+
+        let objeto_producto = arreglo_producto[i];
+        $("#producto").append(
+
+            `<div id="div${objeto_producto.getProducto()}">
+                <h2>${objeto_producto.getProducto()}</h2>
+                <h4>${objeto_producto.getPrecio()}</h4>
+                <image src = ${objeto_producto.getImagen()}> </image>
+                <button id= "btn${objeto_producto.getProducto()}">Comprar</button>
+            </div>`
+        );
+        $(`#btn${objeto_producto.getProducto()}`).on('click',function () {
+            alert("Acabas de comprar al articulo, gracias!!!");
+        })
+
+    }
+})
