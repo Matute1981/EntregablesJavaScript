@@ -351,8 +351,8 @@
 
 let producto1 = new Producto('Gorra', 1200, './images/default.jpg');
 let producto2 = new Producto('Remera', 2500 ,'./images/default.jpg');
-let producto3 = new Producto('El Veneno de tu Soledad - CD', 1400, './images/default.jpg');
-let producto4 = new Producto('El Momento Indicado - CD', 1700, './images/default.jpg');
+let producto3 = new Producto('El_Veneno_de_tu_Soledad', 1400, './images/default.jpg');
+let producto4 = new Producto('El_Momento_Indicado', 1700, './images/default.jpg');
 
 let arreglo_producto = new Array () ;
 arreglo_producto.push(producto1);
@@ -378,8 +378,34 @@ $(document).ready(()=>{
             </div>`
         );
         $(`#btn${objeto_producto.getProducto()}`).on('click',function () {
-            alert("Acabas de comprar al articulo, gracias!!!");
-        })
+            
+            $(`#div${objeto_producto.getProducto()}`).animate({
+                opacity: '-=0.1',
+            });
 
-    }
+            $(`#div${objeto_producto.getProducto()}`).fadeOut(5000);
+
+            $(`#div${objeto_producto.getProducto()}`).fadeIn(2000);
+
+            $(`body`).append('<p>Acabaste de comprar el articulo, gracias!!</p>');
+
+
+
+                })
+
+}
+
+            $("#titulo").click(function (){
+
+                $("#titulo").css("color","gray")
+                            .slideUp(3000)
+                            .delay(3000)
+                            .slideDown(3000)
+                            .delay(2000)
+                            .slideUp(2000)
+                            .slideDown(3000);
+
+            })
+
+
 })
